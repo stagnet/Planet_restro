@@ -4,7 +4,8 @@ import styled from 'styled-components/native';
 import { SvgXml } from 'react-native-svg';
 import star from '../../../../assets/star';
 import open from '../../../../assets/open';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
+import { Spacer } from '../../../components/Spacer';
 
 const Title = styled.Text`
   font-family: ${(props) => props.theme.fonts.heading};
@@ -47,7 +48,7 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
     address = 'Fukushima umamoto town',
     isOpenNow = true,
     rating = 4,
-    isClosedTemporarily = false,
+    isClosedTemporarily = true,
   } = restaurant;
 
   const ratingArray = Array.from(new Array(Math.floor(rating)));
@@ -63,7 +64,15 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
               <SvgXml xml={star} height={20} width={20} />
             ))}
           </Row>
-          <Row>{isOpenNow && <SvgXml xml={open} height={20} width={30} />}</Row>
+          {isClosedTemporarily && (
+            <Text style={{ color: 'red' }}>Closed Temporarily</Text>
+          )}
+
+          <Row>
+            <Spacer position='left' size='large'>
+              {isOpenNow && <SvgXml xml={open} height={20} width={30} />}
+            </Spacer>
+          </Row>
         </Section>
 
         <Address>{address}</Address>
