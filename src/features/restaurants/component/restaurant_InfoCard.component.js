@@ -1,45 +1,18 @@
 import React from 'react';
-import { Card, Paragraph } from 'react-native-paper';
-import styled from 'styled-components/native';
 import { SvgXml } from 'react-native-svg';
 import star from '../../../../assets/star';
 import open from '../../../../assets/open';
-import { View, Text } from 'react-native';
-import { Spacer } from '../../../components/Spacer';
+import { Spacer } from '../../../components/spacer/Spacer';
+import { Text } from '../../../components/typography/text.component';
+import {
+  RestaurantCard,
+  Address,
+  Info,
+  RestaurantCover,
+  Row,
+  Section,
+} from '../component/restaurant_infoCard.styles';
 
-const Title = styled.Text`
-  font-family: ${(props) => props.theme.fonts.heading};
-  font-size: ${(props) => props.theme.fontSizes.body};
-  padding: ${(props) => props.theme.space[1]};
-  color: ${(props) => props.theme.colors.ui.primary};
-`;
-
-const RestaurantCard = styled(Card)`
-  background-color: white;
-`;
-
-const RestaurantCover = styled(Card.Cover)`
-  padding: ${(props) => props.theme.space[3]};
-  background-color: white;
-`;
-
-const Info = styled.View`
-  padding: ${(props) => props.theme.space[3]};
-`;
-
-const Address = styled(Paragraph)`
-  font-family: ${(props) => props.theme.fonts.heading};
-  font-size: ${(props) => props.theme.fontSizes.suheading};
-  padding: ${(props) => props.theme.space[1]};
-`;
-
-const Section = styled(View)`
-  flex-direction: row;
-  justify-content: space-between;
-`;
-const Row = styled.View`
-  flex-direction: row;
-`;
 export const RestaurantInfoCard = ({ restaurant = {} }) => {
   const {
     name = 'Sushi Town',
@@ -57,7 +30,7 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
     <RestaurantCard elevation={5}>
       <RestaurantCover key={name} source={{ uri: photos[0] }} />
       <Info>
-        <Title>{name}</Title>
+        <Text variant='lable'>{name}</Text>
         <Section>
           <Row>
             {ratingArray.map(() => (
@@ -65,7 +38,7 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
             ))}
           </Row>
           {isClosedTemporarily && (
-            <Text style={{ color: 'red' }}>Closed Temporarily</Text>
+            <Text variant='error'>Closed Temporarily</Text>
           )}
 
           <Row>
