@@ -2,6 +2,11 @@ import styled from 'styled-components/native';
 import { Card, Paragraph } from 'react-native-paper';
 import { View } from 'react-native';
 
+export const Icon = styled.Image`
+  width: 15px;
+  height: 15px;
+`;
+
 export const RestaurantCard = styled(Card)`
   background-color: ${(props) => props.theme.colors.bg.primary};
 `;
