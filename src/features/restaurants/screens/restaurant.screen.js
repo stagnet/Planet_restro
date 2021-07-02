@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 //todo; STEP4 - use the react context inside any component you want using 'useContext'
 import {
   View,
@@ -12,9 +12,10 @@ import styled from 'styled-components/native';
 
 import { Search } from '../component/searchbar.component';
 import { SafeArea } from '../../../utils/SafeArea/safeArea.component';
+import { FavouritesBar } from '../../../components/favourites/favouriteBar.component';
 
 import { RestaruantsContext } from '../../../services/restaurant/restarunt.context';
-// import { FavouritesContext } from '../../../services/favourites/favourites.context';
+import { FavouritesContext } from '../../../services/favourites/favourites.context';
 
 //todo: using below technique we can apply styles to the internal element of a parent component....
 const RestaurantList = styled(FlatList).attrs({
@@ -25,7 +26,10 @@ const RestaurantList = styled(FlatList).attrs({
 
 export const RestaurantScreen = ({ navigation }) => {
   const { restarauntsData, isLoading } = useContext(RestaruantsContext);
-  // const { favourites } = useContext(FavouritesContext);
+  const [isToggled, setIsToggled] = useState(false);
+  const { favourites } = useContext(FavouritesContext);
+  // console.log('toggled', isToggled);
+
   return (
     <SafeArea>
       {isLoading && (
@@ -40,8 +44,12 @@ export const RestaurantScreen = ({ navigation }) => {
       )}
 
       {/* searchBar */}
-      <Search />
+      <Search
+        isFavouritesToggled={isToggled}
+        onFavouritesToggled={() => setIsToggled(!isToggled)}
+      />
 
+      {isToggled && <FavouritesBar favourites={favourites} />}
       {/* restaurant list */}
 
       <RestaurantList
