@@ -10,14 +10,17 @@
   "dependencies": {
     "@expo-google-fonts/lato": "^0.1.0",
     "@expo-google-fonts/oswald": "^0.1.0",
+    "@react-native-async-storage/async-storage": "^1.13.0",
     "@react-native-community/masked-view": "0.1.10",
     "@react-navigation/bottom-tabs": "^5.11.11",
     "@react-navigation/native": "^5.9.4",
     "@react-navigation/stack": "^5.14.5",
     "camelize": "^1.0.0",
     "expo": "~41.0.1",
+    "expo-cli": "^4.11.0",
     "expo-font": "~9.1.0",
     "expo-status-bar": "~1.0.4",
+    "firebase": "8.2.3",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-41.0.0.tar.gz",
@@ -36,5 +39,9 @@
     "@babel/core": "^7.9.0",
     "@types/styled-components": "^5.1.10"
   },
-  "private": true
+  "private": true,
+  "name": "planet_restro",
+  "license": "MIT",
+  "version": "1.0.0",
+  "author": "Stagnet <brucewayne128gb@protonmail.com>"
 }

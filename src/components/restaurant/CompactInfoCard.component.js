@@ -23,8 +23,8 @@ const CompactWebView = styled(WebView)`
 
 const isAndroid = Platform.OS === 'android';
 
-export const CompactRestaurantInfo = ({ restaurant }) => {
-  const Image = isAndroid ? CompactWebView : CompactImage;
+export const CompactRestaurantInfo = ({ restaurant, isMap }) => {
+  const Image = isAndroid && isMap ? CompactWebView : CompactImage;
   return (
     <TouchableOpacity>
       <Item>

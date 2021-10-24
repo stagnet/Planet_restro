@@ -2,7 +2,7 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
-import { Text } from 'react-native';
+import { Text, Button, Alert } from 'react-native';
 import { RestaurantsNavigator } from './restaurants.navigator';
 import { SafeArea } from '../../utils/SafeArea/safeArea.component';
 import { MapScreen } from '../../features/Maps/screen/map.screen';
@@ -14,9 +14,24 @@ const TAB_ICONS = {
   Maps: 'md-map',
 };
 
+const fetchData = () => {
+  fetch('https://api.etherapypro.com/data', { method: 'GET' })
+    .then((response) => {
+      response.json();
+      // console.log({ res: response.json() });
+    })
+    .then((responseJson) => {
+      //Success
+      console.log(responseJson);
+      // Alert.alert(responseJson);
+    })
+    .catch((error) => console.log(error));
+};
+
 const Settings = () => (
   <SafeArea>
     <Text>settings page</Text>
+    <Button title='Api call' onPress={fetchData} />
   </SafeArea>
 );
 
