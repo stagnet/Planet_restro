@@ -3,12 +3,12 @@ import React, { useState, useContext, useEffect } from 'react';
 import { Text, View } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import styled from 'styled-components';
-import { Search } from '../component/map.searchbar.component';
+import { Search } from '../components/map.searchbar.component';
 
 import { RestaruantsContext } from '../../../services/restaurant/restarunt.context';
 import { LocationContext } from '../../../services/location/location.context';
 
-import { MapCallout } from '../component/map.callout.component';
+import { MapCallout } from '../components/map.callout.component';
 
 const Map = styled(MapView)`
   height: 100%;
