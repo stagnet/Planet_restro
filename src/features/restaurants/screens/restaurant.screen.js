@@ -6,11 +6,11 @@ import {
   ActivityIndicator,
   TouchableOpacity,
 } from 'react-native';
-import { RestaurantInfoCard } from '../component/restaurant_InfoCard.component';
+import { RestaurantInfoCard } from '../components/restaurant_InfoCard.component';
 import { Spacer } from '../../../components/spacer/Spacer';
 import styled from 'styled-components/native';
 
-import { Search } from '../component/searchbar.component';
+import { Search } from '../components/searchbar.component';
 import { SafeArea } from '../../../utils/SafeArea/safeArea.component';
 import { FavouritesBar } from '../../../components/favourites/favouriteBar.component';
 
