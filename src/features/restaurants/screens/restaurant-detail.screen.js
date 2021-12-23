@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { RestaurantInfoCard } from '../component/restaurant_InfoCard.component';
+import { RestaurantInfoCard } from '../components/restaurant_InfoCard.component';
 import { SafeArea } from '../../../utils/SafeArea/safeArea.component';
 import { List } from 'react-native-paper';
 import { ScrollView } from 'react-native';
