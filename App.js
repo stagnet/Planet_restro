@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { StatusBar as ExpoStatusBar } from 'expo-status-bar';
 import { ThemeProvider } from 'styled-components/native';
 import { theme } from './src/infrasturcture/theme/index';
@@ -10,9 +10,7 @@ import {
 } from '@expo-google-fonts/oswald';
 import { Lato_400Regular, useFonts as useLato } from '@expo-google-fonts/lato';
 
-import { RestaruantsContextProvider } from './src/services/restaurant/restarunt.context';
-import { LocationContextProvider } from './src/services/location/location.context';
-import { FavouritesContextProvider } from './src/services/favourites/favourites.context';
+import { AuthenticationContextProvider } from './src/services/authentication/auth.context';
 
 import { Navigation } from './src/infrasturcture/routes/index';
 
@@ -33,7 +31,9 @@ const firebaseConfig = {
   measurementId: 'G-HRM45VXJBK',
 };
 
-firebase.initializeApp(firebaseConfig);
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+}
 
 export default function App() {
   const [oswald] = useOswald({ Oswald_400Regular });
@@ -47,13 +47,9 @@ export default function App() {
     <>
       <ThemeProvider theme={theme}>
         {/* //todo; STEP2 - import it to App level globally... */}
-        <FavouritesContextProvider>
-          <LocationContextProvider>
-            <RestaruantsContextProvider>
-              <Navigation />
-            </RestaruantsContextProvider>
-          </LocationContextProvider>
-        </FavouritesContextProvider>
+        <AuthenticationContextProvider>
+          <Navigation />
+        </AuthenticationContextProvider>
 
         <ExpoStatusBar style='auto' />
       </ThemeProvider>
