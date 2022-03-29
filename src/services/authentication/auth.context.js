@@ -12,7 +12,7 @@ export const AuthenticationContextProvider = (props) => {
   firebase.default.auth().onAuthStateChanged((usr) => {
     if (usr) {
       setUser(usr);
-      console.log('already logged in');
+      // console.log('already logged in');
       setIsLoading(false);
     } else {
       setIsLoading(false);
@@ -23,8 +23,10 @@ export const AuthenticationContextProvider = (props) => {
     setIsLoading(true);
     loginRequest(email, passowrd)
       .then((info) => {
-        setUser(info);
-        setIsLoading(false);
+        setTimeout(() => {
+          setUser(info);
+          setIsLoading(false);
+        }, 7000);
       })
       .catch((err) => {
         setIsLoading(false);
@@ -52,8 +54,13 @@ export const AuthenticationContextProvider = (props) => {
   };
 
   const onLogout = () => {
-    setUser(null);
-    firebase.default.auth().signOut();
+    firebase.default
+      .auth()
+      .signOut()
+      .then(() => {
+        setUser(null);
+        setError(null);
+      });
   };
 
   return (
