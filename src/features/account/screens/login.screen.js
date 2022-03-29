@@ -19,8 +19,10 @@ import { AuthenticationContext } from '../../../services/authentication/auth.con
 export const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [Loading, setLoading] = useState(true);
+
   const { onLogin, error, isLoading } = useContext(AuthenticationContext);
-  console.log(error);
+  // console.log('isLoading', isLoading);
   return (
     <AccountBackground>
       <AccountCover />
@@ -57,7 +59,9 @@ export const LoginScreen = ({ navigation }) => {
             <AuthButton
               icon='email'
               mode='contained'
-              onPress={() => onLogin(email, password)}
+              onPress={() => {
+                onLogin(email, password);
+              }}
             >
               Login
             </AuthButton>
