@@ -9,7 +9,7 @@ export const AuthenticationContextProvider = (props) => {
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
 
-  firebase.default.auth().onAuthStateChanged((usr) => {
+  firebase.auth().onAuthStateChanged((usr) => {
     if (usr) {
       setUser(usr);
       // console.log('already logged in');
@@ -26,7 +26,7 @@ export const AuthenticationContextProvider = (props) => {
         setTimeout(() => {
           setUser(info);
           setIsLoading(false);
-        }, 7000);
+        }, 1000);
       })
       .catch((err) => {
         setIsLoading(false);
